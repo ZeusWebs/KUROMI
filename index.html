@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuromi Baby Fan Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="kuromi-stye.css">
+</head>
+<body id="body">
+    <!-- Floating Background Elements -->
+    <div class="floating-heart" style="top: 15%; left: 20%; animation-delay: 0s;"></div>
+    <div class="floating-heart" style="top: 12%; left: 70%; animation-delay: 3s;"></div>
+    <div class="floating-heart" style="top: 90%; left: 80%; animation-delay: 6s;"></div>
+    <div class="floating-heart" style="top: 80%; left: 10%; animation-delay: 6s;"></div>
+
+    <div id="kuromi-head">
+        <div id="kuromi-letter">KUROMI</div>
+    </div>
+
+    <!-- Landing Page -->
+    <div id="landing-box" class="centered-box">
+        <div class="kuromi-container">
+            <img src="pictures/kuromi-hugs.gif" alt="Kuromi Dancing" class="kuromi-gif">
+        </div>
+        <h2>Certified Kuromi Baby Fan?</h2>
+        <button id="continue-btn-landing">Continue</button>
+        <audio id="kuromi-audio" src="kuromi-music.mp3" controls loop></audio>
+        <button id="music-btn">MUSIC</button>
+
+    </div>
+ <script src="script.js"></script>
+    <!-- Input Form -->
+    <div id="input-form" class="centered-box hidden">
+        <h2>Welcome, Kuromi Fan!</h2>
+        <label for="name">Pangalan:</label>
+        <input type="text" id="name" placeholder="Use proper capitalization!"><br>
+        <label for="age">Edad:</label>
+        <input type="number" id="age" placeholder="Enter your age"><br>
+        <label for="anniversary">Relationship Anniversary:</label>
+        <input type="date" id="anniversary"><br>
+        <button id="submit-btn">Submit</button>
+        <p id="error-message" style="color: red; display: none;">Please fill in all fields correctly!</p>
+    </div>
+
+    <!-- Warning Box -->
+    <div id="warning-box" class="centered-box hidden">
+        <h2>System Alert!</h2>
+        <p>Nasagap namin na ikaw ay may matinding kaso: "Pang-aaway at Pagbibigay ng matinding selos!"</p>
+        <button id="continue-btn-warning">Continue</button>
+    </div>
+
+    <!-- Video Box -->
+    <div id="video-box" class="centered-box hidden">
+        <video id="video-player" width="320" height="240" loop>
+            <source src="videos/second-video.mp4" type="video/mp4">
+        </video>
+        <div>Ayon sa mga Kuromi Fans, ganito ang halimbawa na dapat gawin sa mga ma-pride at hindi marunong magpakumbaba.</div>
+        <button id="stop-btn">Stop</button>
+    </div>
+
+    <!-- Stop Box -->
+    <div id="stop-box" class="centered-box hidden">
+        <h2>Request Denied!</h2>
+        <p>Pindutin ang<a href="https://www.facebook.com/hahah9192" style="color: #f48fb1; text-decoration: none;"> Customer help</a>.</p>
+    </div>
+
+    <script>
+        const landingBox = document.getElementById("landing-box");
+        const inputForm = document.getElementById("input-form");
+        const warningBox = document.getElementById("warning-box");
+        const videoBox = document.getElementById("video-box");
+        const stopBox = document.getElementById("stop-box");
+
+        const continueLandingBtn = document.getElementById("continue-btn-landing");
+        const submitBtn = document.getElementById("submit-btn");
+        const continueWarningBtn = document.getElementById("continue-btn-warning");
+        const stopBtn = document.getElementById("stop-btn");
+
+        // Initial Landing Button
+        continueLandingBtn.addEventListener("click", () => {
+            landingBox.classList.add("hidden");
+            inputForm.classList.remove("hidden");
+        });
+
+        // Input Form Logic
+        submitBtn.addEventListener("click", () => {
+            const name = document.getElementById("name").value.trim();
+            const age = document.getElementById("age").value;
+            const anniversary = document.getElementById("anniversary").value;
+
+            if (!name || !age || anniversary !== "2023-05-14" || name !=="Checilie" || age !=="20")  {
+                document.getElementById("error-message").style.display = "block";
+                return;
+            }
+
+            inputForm.classList.add("hidden");
+            warningBox.classList.remove("hidden");
+        });
+
+        // Warning Box Button
+        continueWarningBtn.addEventListener("click", () => {
+            warningBox.classList.add("hidden");
+            videoBox.classList.remove("hidden");
+        });
+
+        // Stop Button
+        stopBtn.addEventListener("click", () => {
+            videoBox.classList.add("hidden");
+            stopBox.classList.remove("hidden");
+        });
+    </script>
+</body>
+</html>
